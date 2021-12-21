@@ -4,22 +4,28 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Logo from '../Logo/Logo';
 import './NavBar.css';
+import CartWidget from '../CartWidget/CartWidget';
 
 
 const NavBar = () => {
     return (
         <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="#home">
-                <Logo/>
-                {' '}
-                Impresión 3D
-                </Navbar.Brand>
-                <Nav className="me-auto">
-                <Nav.Link href="#home">Inicio</Nav.Link>
-                <Nav.Link href="#features">Tienda</Nav.Link>
-                <Nav.Link href="#pricing">¿Quiénes Somos?</Nav.Link>
-                </Nav>
+            <Container className="d-flex justify-content-between">
+                <div>
+                    <Navbar.Brand href="#inicio">
+                    <Logo/>
+                    {' '}
+                    Impresión 3D
+                    </Navbar.Brand>
+                </div>
+                <div>
+                    <Nav className="me-auto d-flex align-items-center">
+                    <Nav.Link href="#inicio">Inicio</Nav.Link>
+                    <Nav.Link href="#tienda">Tienda</Nav.Link>
+                    <Nav.Link href="#quienessomos">¿Quiénes Somos?</Nav.Link>
+                    <Nav.Link href="#cart"><CartWidget/></Nav.Link>
+                    </Nav>
+                </div>
             </Container>
         </Navbar>
     )
