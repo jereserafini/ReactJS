@@ -9,8 +9,8 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer greeting='Bienvenidos a Impresión 3D'/>
       <ItemCount min={1} max={10} />
+      <ItemListContainer greeting='Bienvenidos a Impresión 3D'/>
     </div>
   );
 }

@@ -33,7 +33,7 @@ const ItemCount = ({min, max}) => {
             <Button className='mx-2 my-2' variant="outline-dark" onClick={mostrar}>Agregar Carrito</Button>
 
             {
-            show && <h3>Usted pidio {contador} productos</h3>
+            show && <h3>Usted pidió {contador} productos</h3>
             }
 
         </div>        
