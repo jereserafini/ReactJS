@@ -1,8 +1,9 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({producto}) => {
+    
     return (
         <div>
             
@@ -12,9 +13,9 @@ const ItemDetail = ({producto}) => {
                     <Card.Title>{producto.producto}</Card.Title>
                     <Card.Text>
                         ${producto.precio}<br/>
-                        Punta para impresora con extrusión tipo bowden
+                        {producto.descripcion}
                     </Card.Text>
-                    <Button id={producto.id} variant="primary">Comprar</Button>
+                    <ItemCount min={1} max={10}/>
                 </Card.Body>
             </Card>
 

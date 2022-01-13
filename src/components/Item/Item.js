@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const Item = ({producto}) => {
     return (
@@ -12,7 +13,9 @@ const Item = ({producto}) => {
                     <Card.Text>
                         ${producto.precio}
                     </Card.Text>
-                    <Button id={producto.id} variant="primary">Comprar</Button>
+                    <Link to={`/detalle/${producto.id}`}>
+                        <Button id={producto.id} variant="primary">Detalle del producto</Button>
+                    </Link>
                 </Card.Body>
             </Card>
         </div>
