@@ -19,13 +19,15 @@ const ItemCount = ({min, max, onAdd}) => {
 
     }    
 
+    
+
     return (
 
         <div className='text-center'>
             <h2>{contador}</h2>
-            <Button className='mx-2' variant="outline-dark" onClick={restaContador}>-</Button>
-            <Button className='mx-2' variant="outline-dark" onClick={sumaContador}>+</Button><br/>
-            <Button className='mx-2 my-2' variant="outline-dark" onClick={() => onAdd(contador)}>Agregar Carrito</Button>
+            <Button className='mx-2' variant="light" onClick={restaContador}>-</Button>
+            <Button className='mx-2' variant="light" onClick={sumaContador}>+</Button><br/>
+            <Button className='mx-2 my-2' variant="light" onClick={() => onAdd(contador)}>Agregar Carrito</Button>
 
         </div>        
 
