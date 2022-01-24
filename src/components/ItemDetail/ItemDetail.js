@@ -21,7 +21,7 @@ const ItemDetail = ({producto}) => {
     return (
         <div>
             
-            <Card className='text-center container my-5 text-white bg-dark' style={{ width: '18rem' }}>
+            <Card border="light" className='text-center container my-5 text-white bg-dark' style={{ width: '18rem' }}>
                 <Card.Img variant="top pt-2" src={producto.image} />
                 <Card.Body>
                     <Card.Title>{producto.producto}</Card.Title>

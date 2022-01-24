@@ -6,9 +6,13 @@ import Logo from '../Logo/Logo';
 import './NavBar.css';
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext';
 
 
 const NavBar = () => {
+
+    const {cantidadProductos} = useCartContext()
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container className="d-flex justify-content-between">
@@ -35,6 +39,9 @@ const NavBar = () => {
                         <Link className='links mx-2' to='/cart'>
                             <CartWidget/>
                         </Link>
+                        <div className='text-black rounded-circle ms-1 px-2 cantidad'>
+                            {cantidadProductos() > 0 && cantidadProductos()}
+                        </div>
                     </Nav>
                 </div>
             </Container>

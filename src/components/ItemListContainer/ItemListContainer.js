@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getFetch } from '../../helpers/mock';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
@@ -28,7 +29,7 @@ const ItemListContainer = ({greeting}) => {
             .then(resp => setProductos(resp))
             .finally( ()=> setLoading(false))            
             
-        }        
+        }
     }, [categoriaId])
 
     
@@ -39,7 +40,7 @@ const ItemListContainer = ({greeting}) => {
 
             <h1 className='text-white'>{greeting}</h1>
 
-            {loading ? <p>Cargando...</p>
+            {loading ? <Spinner className='mt-5' animation="border" variant="light" />
                 :
                 <ItemList productos={productos}/>
 

@@ -19,7 +19,7 @@ export const CartContextProvider = ({children}) => {
     /* Agrego productos al carrito */
     function agregarAlCarrito(items) {
         
-        const index = cartList.findIndex(i => i.id === items.id)        
+        const index = cartList.findIndex(i => i.id === items.id)
 
         if (index > -1) {
 
@@ -30,7 +30,9 @@ export const CartContextProvider = ({children}) => {
             setCartList([...cartList, {...items, cantidad: items.cantidad + cantAnterior}])
             
         } else {
-            setCartList([...cartList, {...items, cantidad: items.cantidad}])            
+
+            setCartList([...cartList, {...items, cantidad: items.cantidad}])
+            
         }
     }    
 
@@ -39,12 +41,39 @@ export const CartContextProvider = ({children}) => {
         setCartList([])
     }
 
+    /* Eliminar producto */
+    const eliminarItem = (id) => {
+        const arraySinItem = cartList.filter((producto) => producto.id !== id);
+        setCartList(arraySinItem);
+    }
+
+    /* Cantidad total de productos */
+    const cantidadProductos = () => {
+        let numeroProductos = 0;
+        cartList.forEach((producto) => {
+            numeroProductos += producto.cantidad;
+        });
+        return numeroProductos;
+    }
+
+    /* Precio total */
+    const total = () => {
+        let sumatoria = 0;
+        cartList.forEach((producto) => {
+            sumatoria += producto.precio * producto.cantidad;
+        });
+        return sumatoria;
+    };
+
 
     return(
         <CartContext.Provider value={{
             cartList,
             agregarAlCarrito,
-            vaciarCarrito
+            vaciarCarrito,
+            eliminarItem,
+            total,
+            cantidadProductos
         }}>
             {children}
         </CartContext.Provider>
