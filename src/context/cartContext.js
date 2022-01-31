@@ -37,7 +37,7 @@ export const CartContextProvider = ({children}) => {
     }    
 
     /* Vacio carrito */
-    function vaciarCarrito() {
+    const vaciarCarrito = () => {
         setCartList([])
     }
 

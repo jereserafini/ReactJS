@@ -56,22 +56,3 @@ const ItemListContainer = ({greeting}) => {
 }
 
 export default ItemListContainer
-
-
-// llamado al mock
-
-/* import { getFetch } from '../../helpers/mock'; */
-
-/* if (categoriaId) {            
-    
-    getFetch
-    .then(resp => setProductos(resp.filter( prod => prod.categoria === categoriaId)))
-    .finally( ()=> setLoading(false))
-    
-} else {            
-    
-    getFetch
-    .then(resp => setProductos(resp))
-    .finally( ()=> setLoading(false))            
-            
-        } */

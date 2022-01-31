@@ -34,9 +34,3 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
-
-
-// Importado y uso del mock
-// import { getFetch } from '../../helpers/mock'
-// getFetch
-// .then(resp => setProducto(resp.find(prod => prod.id === productoId)))

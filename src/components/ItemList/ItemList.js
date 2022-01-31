@@ -6,7 +6,7 @@ const ItemList = ({productos}) => {
         <div className='d-flex flex-wrap mx-1 justify-content-around'>
             {productos.map(producto =>
                 
-                <Item producto={producto}/>
+                    <Item key={producto.id} producto={producto}/>
             
             )}
         </div>
