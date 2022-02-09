@@ -12,20 +12,17 @@ function App() {
   return (
         <CartContextProvider>
 
-          <div className='fondo'>
             <BrowserRouter>
+
               <NavBar />
-            
-              <Routes>
-            
+
+              <Routes>            
                 <Route exact path='/' element={<ItemListContainer greeting='Bienvenidos a Impresión 3D'/>} />
-                <Route exact path='/categoria/:categoriaId' element={<ItemListContainer greeting='Bienvenidos a Impresión 3D'/>} />
-                <Route exact path='/detalle/:productoId' element={<ItemDetailContainer/>} />
-                <Route exact path='/cart' element={<Cart/>} />
-            
+                <Route exact path='/categoria/:categoryId' element={<ItemListContainer greeting='Bienvenidos a Impresión 3D'/>} />
+                <Route exact path='/detalle/:productId' element={<ItemDetailContainer/>} />
+                <Route exact path='/cart' element={<Cart/>} />            
               </Routes>
             </BrowserRouter>
-          </div>
 
         </CartContextProvider>
   );

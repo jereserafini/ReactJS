@@ -1,42 +1,43 @@
-import React from 'react'
-import './ItemListContainer.css'
 import { useState, useEffect } from "react";
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
-
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
-
 
 
 const ItemListContainer = ({greeting}) => {
     
-    const [productos, setProductos] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     
-    const {categoriaId} = useParams()
+    /* Guardo el parametro para utilizar la ruta */
+    const {categoryId} = useParams()
     
     useEffect(() => {
-        if (categoriaId) {
+
+        /* Traigo los datos de firestore */
+        if (categoryId) {
             
             const db = getFirestore();
-            const queryCollection = query(collection(db, 'productos'), where('categoria', '==', categoriaId));
+            const queryCollection = query(collection(db, 'products'), where('category', '==', categoryId));
             getDocs(queryCollection)
-            .then((resp) => setProductos(resp.docs.map((prod) =>({ id: prod.id, ...prod.data() }))))
+            .then((resp) => setProducts(resp.docs.map((prod) =>({ id: prod.id, ...prod.data() }))))
+            .catch(err => err)
             .finally( ()=> setLoading(false))
             
         } else {
             
             const db = getFirestore();
-            const queryCollection = query(collection(db, 'productos'));
+            const queryCollection = query(collection(db, 'products'));
             getDocs(queryCollection)
-            .then((resp) => setProductos(resp.docs.map((prod) =>({ id: prod.id, ...prod.data() }))))
+            .then((resp) => setProducts(resp.docs.map((prod) =>({ id: prod.id, ...prod.data() }))))
+            .catch(err => err)
             .finally( ()=> setLoading(false))
             
         }
         
         
-    }, [categoriaId])        
+    }, [categoryId])        
         
         
         return (
@@ -47,7 +48,7 @@ const ItemListContainer = ({greeting}) => {
 
             {loading ? <Spinner className='mt-5' animation="border" variant="light" />
                 :
-                <ItemList productos={productos}/>
+                <ItemList products={products}/>
                 
             }
             

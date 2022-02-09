@@ -3,17 +3,17 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-const Item = ({producto}) => {
+const Item = ({product}) => {
     return (
             <Card border="light" className='text-center container my-5 card text-white bg-dark' style={{ width: '18rem', height: '28rem'}}>
-                <Card.Img variant="top pt-2" src={producto.image} />
+                <Card.Img variant="top pt-2" src={product.image} />
                 <Card.Body>
-                    <Card.Title>{producto.producto}</Card.Title>
+                    <Card.Title>{product.product}</Card.Title>
                     <Card.Text>
-                        ${producto.precio}
+                        ${product.price}
                     </Card.Text>
-                    <Link to={`/detalle/${producto.id}`}>
-                        <Button id={producto.id} variant="light">Detalle del producto</Button>
+                    <Link to={`/detalle/${product.id}`}>
+                        <Button id={product.id} variant="light">Detalle del producto</Button>
                     </Link>
                 </Card.Body>
             </Card>

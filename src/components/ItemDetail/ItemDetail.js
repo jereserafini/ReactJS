@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext';
 
-const ItemDetail = ({producto}) => {
+const ItemDetail = ({product}) => {
 
-    const {agregarAlCarrito} = useCartContext()
+    const {addToCart} = useCartContext()
 
     const [show, setShow] = useState(true)
 
-    const onAdd = (contador) => {
+    const onAdd = (counter) => {
         setShow(false)
-        agregarAlCarrito({...producto, cantidad: contador})
+        addToCart({...product, quantity: counter})
     }
     
 
@@ -22,14 +22,14 @@ const ItemDetail = ({producto}) => {
         <div>
             
             <Card border="light" className='text-center container my-5 text-white bg-dark' style={{ width: '18rem' }}>
-                <Card.Img variant="top pt-2" src={producto.image} />
+                <Card.Img variant="top pt-2" src={product.image} />
                 <Card.Body>
-                    <Card.Title>{producto.producto}</Card.Title>
+                    <Card.Title>{product.product}</Card.Title>
                     <Card.Text>
-                        ${producto.precio}<br/>
-                        {producto.descripcion}
+                        ${product.price}<br/>
+                        {product.description}
                     </Card.Text>
-                    {show ? <ItemCount onAdd={onAdd} min={1} max={10}/> : 
+                    {show ? <ItemCount onAdd={onAdd} min={1} max={product.stock}/> : 
                     <div>
                         <Link to='/cart'><Button className='mx-2 my-2' variant="light">Terminar compra</Button></Link>
                         <Link to='/'><Button className='mx-2 my-2' variant="light">Continuar comprando</Button></Link>

@@ -1,16 +1,16 @@
-import React from 'react'
+import { memo } from 'react'
 import Item from '../Item/Item'
 
-const ItemList = ({productos}) => {
+const ItemList = memo( ({products}) => {
     return (
         <div className='d-flex flex-wrap mx-1 justify-content-around'>
-            {productos.map(producto =>
+            {products.map(product =>
                 
-                    <Item key={producto.id} producto={producto}/>
+                    <Item key={product.id} product={product}/>
             
             )}
         </div>
     )
-}
+})
 
 export default ItemList

@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 const CartContext = createContext([])
 
 
-/* Funcion que me permite importar el useContext en todos lados */
+/* Funcion que me permite importar el contexto en todos lados */
 export function useCartContext() {
     return useContext(CartContext)
 }
@@ -17,63 +17,63 @@ export const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
     /* Agrego productos al carrito */
-    function agregarAlCarrito(items) {
+    function addToCart(items) {
         
         const index = cartList.findIndex(i => i.id === items.id)
 
         if (index > -1) {
 
-            const cantAnterior = cartList[index].cantidad
+            const qtyPrev = cartList[index].quantity
 
             cartList.splice(index, 1)
 
-            setCartList([...cartList, {...items, cantidad: items.cantidad + cantAnterior}])
+            setCartList([...cartList, {...items, quantity: items.quantity + qtyPrev}])
             
         } else {
 
-            setCartList([...cartList, {...items, cantidad: items.cantidad}])
+            setCartList([...cartList, {...items, quantity: items.quantity}])
             
         }
     }    
 
     /* Vacio carrito */
-    const vaciarCarrito = () => {
+    const deleteCart = () => {
         setCartList([])
     }
 
     /* Eliminar producto */
-    const eliminarItem = (id) => {
-        const arraySinItem = cartList.filter((producto) => producto.id !== id);
-        setCartList(arraySinItem);
+    const removeItem = (id) => {
+        const arrayFixed = cartList.filter((product) => product.id !== id);
+        setCartList(arrayFixed);
     }
 
     /* Cantidad total de productos */
-    const cantidadProductos = () => {
-        let numeroProductos = 0;
-        cartList.forEach((producto) => {
-            numeroProductos += producto.cantidad;
+    const qtyProds = () => {
+        let quantityProds = 0;
+        cartList.forEach((product) => {
+            quantityProds += product.quantity;
         });
-        return numeroProductos;
+        return quantityProds;
     }
 
     /* Precio total */
     const total = () => {
-        let sumatoria = 0;
-        cartList.forEach((producto) => {
-            sumatoria += producto.precio * producto.cantidad;
+        let summation = 0;
+        cartList.forEach((product) => {
+            summation += product.price * product.quantity;
         });
-        return sumatoria;
+        return summation;
     };
 
 
     return(
         <CartContext.Provider value={{
             cartList,
-            agregarAlCarrito,
-            vaciarCarrito,
-            eliminarItem,
+            addToCart,
+            deleteCart,
+            removeItem,
             total,
-            cantidadProductos
+            qtyProds
         }}>
             {children}
         </CartContext.Provider>

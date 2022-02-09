@@ -1,4 +1,3 @@
-import React from 'react'
 import icono from '../../assets/logo.png'
 
 const Logo = () => {

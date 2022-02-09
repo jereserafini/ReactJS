@@ -1,21 +1,20 @@
-import React from 'react'
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 
 const ItemCount = ({min, max, onAdd}) => {
 
-    const [contador, setContador] = useState(min)
+    const [counter, setCounter] = useState(min)
     
 
-    const sumaContador = () =>{
+    const addCounter = () =>{
 
-        contador < max && setContador(prev => prev + 1)
+        counter < max && setCounter(prev => prev + 1)
 
     }
 
-    const restaContador = () =>{
+    const subCounter = () =>{
 
-        contador > min && setContador(prev => prev - 1)
+        counter > min && setCounter(prev => prev - 1)
 
     }    
 
@@ -24,10 +23,10 @@ const ItemCount = ({min, max, onAdd}) => {
     return (
 
         <div className='text-center'>
-            <h2>{contador}</h2>
-            <Button className='mx-2' variant="light" onClick={restaContador}>-</Button>
-            <Button className='mx-2' variant="light" onClick={sumaContador}>+</Button><br/>
-            <Button className='mx-2 my-2' variant="light" onClick={() => onAdd(contador)}>Agregar Carrito</Button>
+            <h2>{counter}</h2>
+            <Button className='mx-2' variant="light" onClick={subCounter}>-</Button>
+            <Button className='mx-2' variant="light" onClick={addCounter}>+</Button><br/>
+            <Button className='mx-2 my-2' variant="light" onClick={() => onAdd(counter)}>Agregar Carrito</Button>
 
         </div>        
 
